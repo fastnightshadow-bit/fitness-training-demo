@@ -5,6 +5,8 @@ const publicPhotos = new Set([
   'trainer-home.webp',
   'profile-gym.avif',
   'profile-gym.webp',
+  'profile-gym-fast.webp',
+  'materials-mark.webp',
   'access-athlete.avif',
   'access-athlete.webp',
 ].map((name) => new URL(`brand/${name}`, self.registration.scope).href))
