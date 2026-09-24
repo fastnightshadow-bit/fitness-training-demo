@@ -7,12 +7,35 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="description" content="Персональные тренировки Fitness Training" />
-    <script src="/fitness-training-demo/asset-bootstrap.js" defer></script>
+    <script data-photo-bootstrap data-base="/fitness-training-demo/">
+      (() => {
+        const base = new URL(document.currentScript.dataset.base, location.origin)
+        if (!location.pathname.startsWith(base.pathname)) return
+        const path = location.pathname.slice(base.pathname.length).replace(/\/+$/, '')
+        const photos = {
+          '': ['trainer-home.webp', 'image/webp'],
+          app: ['trainer-home.webp', 'image/webp'],
+          profile: ['profile-gym.avif', 'image/avif'],
+          access: ['access-athlete.avif', 'image/avif'],
+          'billing/return': ['access-athlete.avif', 'image/avif'],
+        }
+        if (path === 'access' && new URLSearchParams(location.search).get('mode') === 'code') return
+        const photo = Object.hasOwn(photos, path) ? photos[path] : null
+        if (!photo) return
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.setAttribute('as', 'image')
+        link.href = new URL(`brand/${photo[0]}`, base).href
+        link.type = photo[1]
+        link.setAttribute('fetchpriority', 'high')
+        document.head.append(link)
+      })()
+    </script>
     <link rel="manifest" href="/fitness-training-demo/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/fitness-training-demo/brand/apple-touch-icon.png" />
     <title>Fitness Training</title>
-    <script type="module" crossorigin src="/fitness-training-demo/assets/index-Ch8jfBkS.js"></script>
-    <link rel="stylesheet" crossorigin href="/fitness-training-demo/assets/index-BjEbR5LT.css">
+    <script type="module" crossorigin src="/fitness-training-demo/assets/index-Bxq-Wbkk.js"></script>
+    <link rel="stylesheet" crossorigin href="/fitness-training-demo/assets/index-Dg04R3Vl.css">
   </head>
   <body>
     <div id="root"></div>

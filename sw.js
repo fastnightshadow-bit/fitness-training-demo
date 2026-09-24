@@ -2,6 +2,7 @@ const cachePrefix = `fitness-training-brand:${new URL(self.registration.scope).p
 const cacheName = `${cachePrefix}v1`
 const publicPhotos = new Set([
   'trainer-home.jpg',
+  'trainer-home.webp',
   'profile-gym.avif',
   'profile-gym.webp',
   'access-athlete.avif',
